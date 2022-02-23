@@ -13,27 +13,27 @@ class ProductList {
         this._fetchGoods();
         this._render();
     }
-    
-    sum() {
-    return this._goods.reduce((sum, { price }) => sum + price, 0);
-    }
+
+
 
 
     _fetchGoods() { //выборка товаров
         this._goods = [
-            {id: 1, title: 'Notebook', price: 20000},
-            {id: 2, title: 'Mouse', price: 1500},
-            {id: 3, title: 'Keyboard', price: 5000},
-            {id: 4, title: 'Gamepad', price: 4500},
+            { id: 1, title: 'Notebook', price: 20000 },
+            { id: 2, title: 'Mouse', price: 1500 },
+            { id: 3, title: 'Keyboard', price: 5000 },
+            { id: 4, title: 'Gamepad', price: 4500 },
         ];
     }
 
+    sum() {
+        return this._goods.reduce((sum, { price }) => sum + price, 0);
+    }
 
 
-   
     _render() {
         for (const product of this._goods) {
-            const productObject = new ProductItem(product)
+            const productObject = new ProductItem(product);
 
             this._allProducts.push(productObject);
             this._container.insertAdjacentHTML('beforeend', productObject.getHTMLString());

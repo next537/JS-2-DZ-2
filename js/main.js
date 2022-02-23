@@ -1,5 +1,9 @@
 'use strict';
 
+/* Методы для корзины. Если я правильно понял что такое метод то для корзины 
+нам надо добавить методы: список товаров, количество товара в корзине,
+общая сумма товаров в корзине, очистка корзины, + или - единицы товаров */
+
 class ProductList {
     constructor(container = '.products') {
         this._container = document.querySelector(container);
@@ -9,8 +13,13 @@ class ProductList {
         this._fetchGoods();
         this._render();
     }
+    
+    sum() {
+    return this._goods.reduce((sum, { price }) => sum + price, 0);
+    }
 
-    _fetchGoods() {
+
+    _fetchGoods() { //выборка товаров
         this._goods = [
             {id: 1, title: 'Notebook', price: 20000},
             {id: 2, title: 'Mouse', price: 1500},
@@ -19,9 +28,12 @@ class ProductList {
         ];
     }
 
+
+
+   
     _render() {
         for (const product of this._goods) {
-            const productObject = new ProductItem(product);
+            const productObject = new ProductItem(product)
 
             this._allProducts.push(productObject);
             this._container.insertAdjacentHTML('beforeend', productObject.getHTMLString());
@@ -50,6 +62,7 @@ class ProductItem {
 }
 
 new ProductList();
+
 
 // const products = [
 //   {id: 1, title: 'Notebook', price: 20000},
